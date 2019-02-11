@@ -66,6 +66,12 @@ public class PictureTester
     nelly.explore();
   }
 
+  public static void testGrayscale() {
+    Picture nelly = new Picture ("images/nelly.jpg");
+    nelly.grayscale();
+    nelly.explore();
+  }
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -77,7 +83,7 @@ public class PictureTester
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
-    testNegate();
+    //testNegate();
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
