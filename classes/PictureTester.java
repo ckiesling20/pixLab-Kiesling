@@ -62,11 +62,11 @@ public class PictureTester
     canvas.explore();
   }
 
-  public static void testCopyPiece(){
+  /*public static void testCopy(){
     Picture canvas = new Picture("images/640x480.jpg");
-    canvas.createCollage();
+    canvas.copyPiece("images/nelly.jpg",0,0, 40, 40);
     canvas.explore();
-  }
+  }*/
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -118,6 +118,10 @@ public class PictureTester
     nelly.explore();
   }
 
+  public static void textFixUnderwater() {
+    //will i do who knows
+  }
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -137,7 +141,7 @@ public class PictureTester
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-    testCollage();
+    //testCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();

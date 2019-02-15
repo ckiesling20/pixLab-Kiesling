@@ -121,7 +121,7 @@ public class Picture extends SimplePicture
       {
         pixelObj.setRed(255 - pixelObj.getRed());
         pixelObj.setGreen(255 -pixelObj.getGreen());
-        pixelObj.setBlue(255 - pixelObj.getGreen());
+        pixelObj.setBlue(255 - pixelObj.getBlue());
       }
     }
   }
@@ -332,7 +332,7 @@ public class Picture extends SimplePicture
         toPixel.setColor(fromPixel.getColor());
       }
     }
-  } */
+  }
 
   public void mirrorGull()
   {
@@ -370,7 +370,7 @@ public class Picture extends SimplePicture
     this.write("images/collage.jpg");
   }
   
-  
+
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
     */
@@ -395,6 +395,10 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.WHITE);
       }
     }
+  }
+
+  public static void fixUnderwater() {
+    //will i do? idk
   }
   
   
