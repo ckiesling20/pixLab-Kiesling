@@ -62,11 +62,14 @@ public class PictureTester
     canvas.explore();
   }
 
-  /*public static void testCopy(){
+  public static void testCopyPiece(){
+  }
+
+  public static void testMyCollage() {
     Picture canvas = new Picture("images/640x480.jpg");
-    canvas.copyPiece("images/nelly.jpg",0,0, 40, 40);
+    canvas.myCollage();
     canvas.explore();
-  }*/
+  }
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -155,5 +158,7 @@ public class PictureTester
     //testMirrorHorizontal();
     //testMirrorHorizontalBotToTop();
     //testMirrorDiagonal();
+    //testCopyPiece();
+    testMyCollage();
   }
 }

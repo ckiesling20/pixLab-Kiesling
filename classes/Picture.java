@@ -312,19 +312,19 @@ public class Picture extends SimplePicture
   }
 }
 
-  public void copyPiece(Picture fromPic, int startRow, int startCol, int begCol, int begRow)
+  public void copyPiece(Picture fromPic, int startRow, int startCol, int begCol, int begRow, int endCol, int endRow)
   {
     Pixel fromPixel = null;
     Pixel toPixel = null;
     Pixel[][] toPixels = this.getPixels2D();
     Pixel[][] fromPixels = fromPic.getPixels2D();
     for (int fromRow = begRow, toRow = startRow;
-         fromRow < fromPixels.length &&
-                 toRow < toPixels.length;
+         fromRow < endRow &&
+                 toRow < endRow;
          fromRow++, toRow++)
     {
-      for (int fromCol = begCol, toCol = startCol;  fromCol < fromPixels[0].length &&
-              toCol < toPixels[0].length;
+      for (int fromCol = begCol, toCol = startCol;  fromCol < endCol &&
+              toCol < endCol;
            fromCol++, toCol++)
       {
         fromPixel = fromPixels[fromRow][fromCol];
@@ -332,6 +332,16 @@ public class Picture extends SimplePicture
         toPixel.setColor(fromPixel.getColor());
       }
     }
+  }
+
+  public void myCollage() {
+    Picture nelly = new Picture("images/nelly.jpg");
+    Picture beach = new Picture("images/beach.jpg");
+    this.copyPiece(nelly, 0,0, 200, 350, 500,650);
+    this.copyPiece(nelly, 300,300,400,200,500,300 );
+    this.copyPiece(beach, 300,200,400,200,500,300 );
+    this.copyPiece(beach, 200,300,400,200,500,300 );
+    this.write("images/mycollage.jpg");
   }
 
   public void mirrorGull()
