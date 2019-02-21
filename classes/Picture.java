@@ -320,13 +320,15 @@ public class Picture extends SimplePicture
     Pixel[][] fromPixels = fromPic.getPixels2D();
     for (int fromRow = begRow, toRow = startRow;
          fromRow < endRow &&
-                 toRow < endRow;
+                 toRow < toPixels.length;
          fromRow++, toRow++)
     {
+
       for (int fromCol = begCol, toCol = startCol;  fromCol < endCol &&
-              toCol < endCol;
+              toCol < toPixels[0].length;
            fromCol++, toCol++)
       {
+
         fromPixel = fromPixels[fromRow][fromCol];
         toPixel = toPixels[toRow][toCol];
         toPixel.setColor(fromPixel.getColor());
@@ -337,11 +339,21 @@ public class Picture extends SimplePicture
   public void myCollage() {
     Picture nelly = new Picture("images/nelly.jpg");
     Picture beach = new Picture("images/beach.jpg");
+    Picture butterfly = new Picture("images/butterfly1.jpg");
+    Picture temple = new Picture("images/temple.jpg");
+    Picture wall = new Picture("images/whiteflower.jpg");
+    temple.zeroBlue();
+    wall.negate();
+    butterfly.mirrorHorizontalBotToTop();
     this.copyPiece(nelly, 0,0, 200, 350, 500,650);
-    this.copyPiece(nelly, 300,300,400,200,500,300 );
     this.copyPiece(beach, 300,200,400,200,500,300 );
+    this.copyPiece(butterfly, 300,300,100,100,200,200 );
     this.copyPiece(beach, 200,300,400,200,500,300 );
-    this.write("images/mycollage.jpg");
+    this.copyPiece(temple,100,300,100,100,200,200);
+    this.copyPiece(temple,300,100,100,100,200,200);
+    this.copyPiece(wall,0,300,100,100,200,200);
+    this.copyPiece(wall,300,0,100,100,200,200);
+    this.write("images/myCollage.jpg");
   }
 
   public void mirrorGull()
@@ -388,18 +400,25 @@ public class Picture extends SimplePicture
   {
     Pixel leftPixel = null;
     Pixel rightPixel = null;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+
     Pixel[][] pixels = this.getPixels2D();
-    Color rightColor = null;
-    for (int row = 0; row < pixels.length; row++)
+
+
+    for (int row = 0; row < pixels.length - 1; row++)
     {
       for (int col = 0; 
            col < pixels[0].length-1; col++)
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
-        rightColor = rightPixel.getColor();
-        if (leftPixel.colorDistance(rightColor) > 
-            edgeDist)
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[row + 1][col];
+
+
+        if (leftPixel.colorDistance(rightPixel.getColor()) >
+            edgeDist || topPixel.colorDistance(bottomPixel.getColor()) > edgeDist)
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
@@ -417,10 +436,14 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.keepOnlyBlue();
-    beach.explore();
+//    Picture beach = new Picture("images/beach.jpg");
+//    beach.explore();
+//    beach.keepOnlyBlue();
+//    beach.explore();
+
+    Picture canvas = new Picture("images/640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
   }
 
   
