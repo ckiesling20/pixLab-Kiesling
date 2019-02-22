@@ -75,7 +75,7 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("images/swan.jpg");
-    swan.edgeDetection(10);
+    swan.edgeDetection2(10);
     swan.explore();
   }
 
